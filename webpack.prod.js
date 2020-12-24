@@ -10,14 +10,14 @@ module.exports = {
         minimizer: [ new OptimizeCssAssetsPlugin() ]
     },
     output: {
-        filename: 'main.[contentHash].js'
+        filename: 'main.[contentHash].js',
     },
     module: {
         rules: [
             { 
                 test: /\.js$/, 
                 exclude: /node_modules/, 
-                loader: 'html-loader',
+                loader: 'babel-loader',
             },
             {
                 test: /\.css$/,
@@ -63,8 +63,8 @@ module.exports = {
             filename: './index.html'
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].[contentHash].css',
-            ignoreOrder: false
+            filename: "[name].[contentHash].css",
+            ignoreOrder: true
         }),
         new MinifyPlugin(),
         new CleanWebpackPlugin(),
